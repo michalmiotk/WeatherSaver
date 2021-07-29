@@ -11,15 +11,16 @@ class ApiHandler():
         if response.status_code == 200:
             return response.content
         else:
+            print("problem z połączeniem, spróbuj jeszcze raz włączyć program")
             return b''
 
-    def request_dict(self):
+    def request_dict_list(self):
         bytes_response = self.request_bytes_content()
         if bytes_response:
             string_response = self.decoder(bytes_response)
             return json.loads(string_response)
         else:
-            return {}
+            return []
 
     @staticmethod
     def decoder(bytes_input):
