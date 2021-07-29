@@ -1,3 +1,5 @@
+import logging
+
 from api_handler import ApiHandler
 from data_saver import DataSaver
 from data_extractor import DataExtractor
@@ -13,7 +15,9 @@ class UserApi():
 
     def new_log(self, city="Gorzów"):
         api_handler = ApiHandler()
+        print("rozpoczęto łączenie z serwerem")
         cities_info_as_list_dict = api_handler.request_dict_list()
+        print("zakończono łączenie z serwerem")
         data_extractor = DataExtractor()
         city_info = data_extractor.extract_city_temperature_date_time(city, cities_info_as_list_dict)
         data_dict = self.data_saver.create_dict_from_data(city, city_info['temperature'], city_info['date'], city_info['hour'])

@@ -23,3 +23,4 @@ class DataSaver():
         extended_dict = self.get_extended_dict(old_data, new_dict)
         with open(file_path, 'w') as f:
             json.dump(extended_dict, f,  indent=4)
+            print("Dane zapisane w ",file_path)
