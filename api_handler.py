@@ -2,6 +2,7 @@ import json
 
 import requests
 
+
 class ApiHandler():
     def __init__(self):
         self.url = 'https://danepubliczne.imgw.pl/api/data/synop'

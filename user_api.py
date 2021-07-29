@@ -1,8 +1,7 @@
-import logging
-
 from api_handler import ApiHandler
 from data_saver import DataSaver
 from data_extractor import DataExtractor
+
 
 class UserApi():
     def __init__(self):

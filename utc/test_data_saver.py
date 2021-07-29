@@ -1,7 +1,8 @@
 import copy
 import unittest
+
 from data_saver import DataSaver
-from copy import deepcopy
+
 
 class TestDataSaver(unittest.TestCase):
     def setUp(self) -> None:
@@ -28,7 +29,6 @@ class TestDataSaver(unittest.TestCase):
         city = "Szczecin"
         desired_json =  {'city':'Szczecin', 'temperature':20, 'date':"2021-01-21","hour":"14"}
         self.assertEqual(desired_json, self.data_saver.create_dict_from_data(city, temperature, date, hour))
-
 
 
 if __name__ == '__main__':
