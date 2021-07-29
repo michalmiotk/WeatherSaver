@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "circleci/python:3.6.4"
+    steps:
+      - checkout
+      - run: python3 main.py
+
+  test:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "circleci/python:3.6.4"
+    steps:
+      - checkout
+      - run: python3 -m unittest discover utc
+
+workflows:
+  build_and_test:
+    jobs:
+      - build:
+        steps:
+          - checkout  # checkout source code to working directory
+          - run:
+              command: |  # use pipenv to install dependencies
+                pip install -r requirements.txt
+      - test:
+          requires:
+            - build
