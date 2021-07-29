@@ -8,16 +8,15 @@ class ApiHandler():
         self.url = 'https://danepubliczne.imgw.pl/api/data/synop'
 
     def request_bytes_content(self):
-        try:
+        status_code = None
+        while status_code != 200:
             response = requests.get(self.url, timeout=(2,10))
-        except requests.exceptions.ReadTimeout as e:
-            print("za długie oczekiwanie na odpowiedz serwera", e)
-            raise
-        if response.status_code == 200:
-            return response.content
-        else:
-            raise ConnectionError(f"kod odpowiedzi serwera to {response.status_code} problem z połączeniem, proszę spróbuj jeszcze raz włączyć program")
-            return b''
+            status_code = response.status_code
+            if status_code == 200:
+                return response.content
+            else:
+                print(f"kod odpowiedzi serwera to {response.status_code} \
+                problem z połączeniem, proszę poczekać")
 
     def request_dict_list(self):
         bytes_response = self.request_bytes_content()
