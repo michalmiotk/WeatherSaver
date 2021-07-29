@@ -7,7 +7,7 @@ class DataExtractorTestCase(unittest.TestCase):
 
     def test_extract_city_temperature(self):
         city = 'Gorzów'
-        desired_output = '30'
+        desired_output = 30
         sample_dict_list = [{'stacja':'Gorzów', 'temperatura':'30'},]
         self.assertEqual(desired_output, self.data_extractor.extract_temperature(city, sample_dict_list))
 
