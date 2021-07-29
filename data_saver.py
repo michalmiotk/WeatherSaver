@@ -8,9 +8,18 @@ class DataSaver():
         extended_json['logs'].append(extending_json)
         return extended_json
 
-    def create_json_from_data(self, city, temperature, date, hour):
+    def create_dict_from_data(self, city, temperature, date, hour):
         return {'city': city, 'temperature': temperature, 'date': date,"hour": hour}
 
     def append_data_to_file(self, new_dict, file_path):
-        old_data = json.load(file_path)
-        json.dump(file_path, dict)
+        try:
+            with open(file_path, 'r') as f:
+                try:
+                    old_data = json.load(f)
+                except json.JSONDecodeError :
+                    old_data = {'logs': []}
+        except IOError:
+            old_data = {'logs':[]}
+        extended_dict = self.get_extended_dict(old_data, new_dict)
+        with open(file_path, 'w') as f:
+            json.dump(extended_dict, f,  indent=4)

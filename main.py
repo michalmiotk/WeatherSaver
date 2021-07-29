@@ -1,3 +1,5 @@
-from api_handler import ApiHandler
+from user_api import UserApi
 
-api_handler = ApiHandler()
+
+user_api = UserApi()
+user_api.new_log()

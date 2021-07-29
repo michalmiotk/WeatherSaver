@@ -27,7 +27,7 @@ class TestDataSaver(unittest.TestCase):
         hour = "14"
         city = "Szczecin"
         desired_json =  {'city':'Szczecin', 'temperature':20, 'date':"2021-01-21","hour":"14"}
-        self.assertEqual(desired_json, self.data_saver.create_json_from_data(city, temperature, date, hour))
+        self.assertEqual(desired_json, self.data_saver.create_dict_from_data(city, temperature, date, hour))
 
 
 

@@ -11,7 +11,7 @@ class ApiHandler():
         if response.status_code == 200:
             return response.content
         else:
-            print("problem z połączeniem, spróbuj jeszcze raz włączyć program")
+            raise ConnectionError("problem z połączeniem, spróbuj jeszcze raz włączyć program")
             return b''
 
     def request_dict_list(self):
