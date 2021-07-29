@@ -7,7 +7,7 @@ class ApiHandler():
         self.url = 'https://danepubliczne.imgw.pl/api/data/synop'
 
     def request_bytes_content(self):
-        response = requests.get(self.url)
+        response = requests.get(self.url, timeout=10)
         if response.status_code == 200:
             return response.content
         else:
